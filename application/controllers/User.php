@@ -9,7 +9,7 @@ class User extends CI_Controller {
 
     public function index() {
         $data['users'] = $this->User_model->get_users();
-        $this->load->view('index', $data);
+        $this->load->view('user/index', $data);
     }
 
     public function create() {
@@ -17,7 +17,7 @@ class User extends CI_Controller {
             $this->User_model->insert_user($this->input->post());
             redirect('user');
         }
-        $this->load->view('create');
+        $this->load->view('user/create_user');
     }
 
     public function edit($id) {
@@ -26,7 +26,7 @@ class User extends CI_Controller {
             $this->User_model->update_user($id, $this->input->post());
             redirect('user');
         }
-        $this->load->view('edit', $data);
+        $this->load->view('user/edit_user', $data);
     }
 
     public function delete($id) {

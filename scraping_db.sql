@@ -8,3 +8,10 @@ CREATE TABLE users (
     email VARCHAR(100) NOT NULL UNIQUE,
     phone VARCHAR(20) NOT NULL
 );
+
+CREATE TABLE dentists (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255),
+    address VARCHAR(255),
+    phone VARCHAR(20)
+);

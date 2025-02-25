@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <h2>Users</h2>
-        <a href="<?= site_url('user/create') ?>" class="btn btn-primary">Add User</a>
+        <a href="<?= site_url('user/create/') ?>" class="btn btn-primary">Add User</a>
         <table class="table table-bordered">
             <tr>
                 <th>ID</th>
