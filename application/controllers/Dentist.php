@@ -1,13 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once APPPATH . 'libraries/Scraper.php';
+
 class Dentist extends CI_Controller {
+
+    private $scraper;
 
     public function __construct() {
         parent::__construct();
         $this->load->model('Dentist_model');
-        $this->load->library('scraper');
         $this->load->helper('url');
+        $this->scraper = new Scraper();
     }
 
     public function index() {
