@@ -19,10 +19,10 @@ class Scraper {
         $crawler = $this->browser->request('GET', $url);
         $dentistas = [];
 
-        $crawler->filter('.dentist-card')->each(function (Crawler $node) use (&$dentistas) {
-            $fullName = $node->filter('.name')->count() ? trim($node->filter('.name')->text()) : 'N/A';
-            $address  = $node->filter('.address')->count() ? trim($node->filter('.address')->text()) : 'N/A';
-            $phone    = $node->filter('.phone')->count() ? trim($node->filter('.phone')->text()) : 'N/A';
+        $crawler->filter('.directorist-listing-single__header')->each(function (Crawler $node) use (&$dentistas) {
+            $fullName = $node->filter('.directorist-listing-title a')->count() ? trim($node->filter('.directorist-listing-title a')->text()) : 'N/A';
+            $address  = $node->filter('.directorist-listing-card-address')->count() ? trim($node->filter('.directorist-listing-card-address')->text()) : 'N/A';
+            $phone    = $node->filter('.directorist-listing-card-address')->count() ? trim($node->filter('.directorist-listing-card-address')->text()) : 'N/A';
 
             $dentistas[] = [
                 'full_name' => $fullName,
