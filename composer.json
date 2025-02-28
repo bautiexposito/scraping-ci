@@ -11,11 +11,16 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
+<<<<<<< HEAD
     	"php": ">=7.1",
         "symfony/browser-kit": "^5.0",
         "symfony/http-client": "^5.0",
         "symfony/dom-crawler": "^5.0",
 		"symfony/css-selector": "^5.0"
+=======
+		"php": ">=5.3.7",
+		"fabpot/goutte": "^3.2"
+>>>>>>> c334b581e36929b10c640d2d905e6ce0d200c37b
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
