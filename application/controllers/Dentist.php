@@ -2,16 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'libraries/Scraper.php';
+// require_once APPPATH . 'libraries/ScraperCopBax.php';
+// require_once APPPATH . 'libraries/ScraperSancor.php';
 
 class Dentist extends CI_Controller {
-
-    private $scraper;
 
     public function __construct() {
         parent::__construct();
         $this->load->model('Dentist_model');
         $this->load->helper('url');
-        $this->scraper = new Scraper();
     }
 
     public function index() {
@@ -30,8 +29,17 @@ class Dentist extends CI_Controller {
             echo "⚠️ Ingresar una URL válida.";
             return;
         }
+        
+        if (strpos($url, 'copba10.com.ar') !== false) {
+            $scraper = new ScraperCopBax();
+        } elseif (strpos($url, 'sancor.com.ar') !== false) {
+            $scraper = new ScraperSancor();
+        } else {
+            echo "⚠️ No se encontró un scraper adecuado para la URL proporcionada.";
+            return;
+        }
 
-        $dentistas = $this->scraper->scrape_dentistas($url);
+        $dentistas = $scraper->scrape($url);
 
         if (empty($dentistas)) {
             echo "⚠️ No se encontraron dentistas en la página.";

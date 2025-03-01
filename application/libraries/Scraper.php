@@ -7,7 +7,7 @@ use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\DomCrawler\Crawler;
 
-class Scraper {
+class ScraperBase {
 
     private $browser;
 
@@ -15,8 +15,15 @@ class Scraper {
         $this->browser = new HttpBrowser(HttpClient::create());
     }
 
-    public function scrape_dentistas($url) {
-        $crawler = $this->browser->request('GET', $url);
+    protected function request($url) {
+        return $this->browser->request('GET', $url);
+    }
+}
+
+class ScraperCopBax extends ScraperBase {
+
+    public function scrape($url) {
+        $crawler = $this->request($url);
         $dentistas = [];
 
         $crawler->filter('.directorist-listing-single__header')->each(function (Crawler $node) use (&$dentistas) {
@@ -30,6 +37,17 @@ class Scraper {
                 'phone'     => $phone
             ];
         });
+        return $dentistas;
+    }
+}
+
+class ScraperSancor extends ScraperBase {
+
+    public function scrape($url){
+        $crawler = $this->request($url);
+        $dentistas = [];
+
+        ################################
 
         return $dentistas;
     }
