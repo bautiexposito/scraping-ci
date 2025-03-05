@@ -3,6 +3,7 @@
 <head>
     <title>Users List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/index_user.css'); ?>">
 </head>
 <body>
     <div class="container">
