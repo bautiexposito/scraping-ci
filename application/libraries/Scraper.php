@@ -76,3 +76,33 @@ class ScraperDOSEM extends ScraperBase {
         return $dentistas;
     }
 }
+
+class ScraperSaludBB extends ScraperBase {
+
+    public function scrape($url) {
+        $crawler = $this->request($url);
+        $dentistas = [];
+
+        $crawler->filter('.row.pb-4')->each(function ($row) use (&$dentistas) {
+            $fullName = $row->filter('.fh5co_magna.py-2')->count() > 0 
+                ? trim($row->filter('.fh5co_magna.py-2')->text()) 
+                : 'N/A';
+
+            $address = $row->filter('.fh5co_mini_time.py-3')->count() > 0 
+                ? trim($row->filter('.fh5co_mini_time.py-3')->text()) 
+                : 'N/A';
+
+            $phone = $row->filter('.fh5co_consectetur p')->count() > 0 
+                ? trim($row->filter('.fh5co_consectetur p')->first()->text()) 
+                : 'N/A';
+
+            $dentistas[] = [
+                'full_name' => $fullName,
+                'address'   => $address,
+                'phone'     => $phone
+            ];
+        });
+
+        return $dentistas;
+    }
+}

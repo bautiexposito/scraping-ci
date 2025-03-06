@@ -26,6 +26,9 @@
             <tr>
                 <td>https://dosembahia.com/listado-de-profesionales-odontologia/</td>
             </tr>
+            <tr>
+                <td>https://www.saludbahiablanca.com.ar/resultado2.php?pag=1&id=47</td>
+            </tr>
         </table>
     </section>
 </body>

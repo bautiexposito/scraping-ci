@@ -32,6 +32,8 @@ class Dentist extends CI_Controller {
             $scraper = new ScraperCopBax();
         } elseif (strpos($url, 'dosembahia.com') !== false) {
             $scraper = new ScraperDOSEM();
+        } elseif (strpos($url, 'saludbahiablanca.com') !== false) {
+            $scraper = new ScraperSaludBB();
         } else {
             echo "⚠️ No se encontró un scraper adecuado para la URL proporcionada.";
             return;
