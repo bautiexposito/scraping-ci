@@ -21,10 +21,10 @@
         <table>
             <h2>URLs Amigables:</h2>
             <tr>
-                <td>copba10.com.ar/profesionales</td>
+                <td>https://copba10.com.ar/profesionales/</td>
             </tr>
             <tr>
-                <td>https://</td>
+                <td>https://dosembahia.com/listado-de-profesionales-odontologia/</td>
             </tr>
         </table>
     </section>

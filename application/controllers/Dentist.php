@@ -2,8 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'libraries/Scraper.php';
-// require_once APPPATH . 'libraries/ScraperCopBax.php';
-// require_once APPPATH . 'libraries/ScraperSancor.php';
 
 class Dentist extends CI_Controller {
 
@@ -32,8 +30,8 @@ class Dentist extends CI_Controller {
         
         if (strpos($url, 'copba10.com.ar') !== false) {
             $scraper = new ScraperCopBax();
-        } elseif (strpos($url, 'sancor.com.ar') !== false) {
-            $scraper = new ScraperSancor();
+        } elseif (strpos($url, 'dosembahia.com') !== false) {
+            $scraper = new ScraperDOSEM();
         } else {
             echo "⚠️ No se encontró un scraper adecuado para la URL proporcionada.";
             return;
