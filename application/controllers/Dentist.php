@@ -47,11 +47,13 @@ class Dentist extends CI_Controller {
         }
 
         foreach ($dentistas as $dentista) {
-            $this->Dentist_model->guardar_dentista(
-                $dentista['full_name'],
-                $dentista['address'],
-                $dentista['phone']
-            );
+            if (!$this->Dentist_model->existe_dentista($dentista['full_name'])) {
+                $this->Dentist_model->guardar_dentista(
+                    $dentista['full_name'],
+                    $dentista['address'],
+                    $dentista['phone']
+                );
+            }
         }
 
         redirect('dentist');

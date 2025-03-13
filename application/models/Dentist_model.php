@@ -22,4 +22,11 @@ class Dentist_model extends CI_Model {
     public function obtener_dentistas() {
         return $this->db->get('dentists')->result();
     }
+
+    public function existe_dentista($full_name) {
+        $this->db->where('full_name', $full_name);
+        $query = $this->db->get('dentists');
+    
+        return $query->num_rows() > 0;
+    }
 }
