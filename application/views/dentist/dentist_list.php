@@ -9,6 +9,7 @@
 <body>
     <h1>Lista de Dentistas</h1>
     <a href="<?= site_url('dentist/nuevo_scraping'); ?>">Nuevo Scraping</a>
+    <a href="<?= site_url('dentist/exportar_csv'); ?>" class="btn">Descargar Lista</a>
 
     <table border="1">
         <thead>

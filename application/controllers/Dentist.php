@@ -56,4 +56,24 @@ class Dentist extends CI_Controller {
 
         redirect('dentist');
     }
+
+    public function exportar_csv() {
+        $dentistas = $this->Dentist_model->obtener_dentistas();
+    
+        $filename = "lista_dentistas_" . date('Ymd') . ".csv";
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename={$filename}");
+        header("Content-Type: text/csv; charset=UTF-8");
+    
+        $output = fopen("php://output", "w");
+    
+        fputcsv($output, ['ID', 'Nombre', 'Dirección', 'Teléfono']);
+    
+        foreach ($dentistas as $dentista) {
+            fputcsv($output, [$dentista->id, $dentista->full_name, $dentista->address, $dentista->phone]);
+        }
+    
+        fclose($output);
+        exit;
+    }
 }
