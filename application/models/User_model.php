@@ -15,6 +15,7 @@ class User_model extends CI_Model {
     }
 
     public function insert_user($data) {
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         return $this->db->insert('users', $data);
     }
 
@@ -24,5 +25,18 @@ class User_model extends CI_Model {
 
     public function delete_user($id) {
         return $this->db->delete('users', ['id' => $id]);
+    }
+
+    public function verificar_usuario($email, $password) {  
+        $query = $this->db->get_where('users', ['email' => $email]);
+
+        if ($query->num_rows() == 1) {
+            $usuario = $query->row_array();
+
+            if (password_verify($password, $usuario['password'])) {
+                return $usuario;
+            }
+        }
+        return false;
     }
 }

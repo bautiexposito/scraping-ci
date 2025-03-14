@@ -11,12 +11,17 @@
     <div class="container">
         <div class="login-card">
             <h2>Bienvenido!</h2>
-            <form>
+
+            <?php if ($this->session->flashdata('error')): ?>
+                <p class="error"><?= $this->session->flashdata('error'); ?></p>
+            <?php endif; ?>
+
+            <form action="<?= site_url('login/autenticar'); ?>" method="post">
                 <div class="input-group">
-                    <input type="email" id="txtEmail" placeholder="Enter Email Address..." required>
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="input-group">
-                    <input type="password" id="txtPassword" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
                 </div>
                 <div class="checkbox-group">
                     <input type="checkbox" id="customCheck">
@@ -24,6 +29,7 @@
                 </div>
                 <button type="submit" class="btn">Iniciar sesión</button>
             </form>
+
             <div class="links">
                 <a href="forgot-password.html">Olvidé mi contraseña</a>
                 <a href="register.html">Crear cuenta</a>
