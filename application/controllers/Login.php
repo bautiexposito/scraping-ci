@@ -14,24 +14,25 @@ class Login extends CI_Controller {
     }
 
     public function autenticar() {
-        $email = $this->input->post('email');
+        $email = trim($this->input->post('email'));
         $password = $this->input->post('password');
 
         $usuario = $this->User_model->verificar_usuario($email, $password);
 
-        if ($usuario) {
-            $this->session->set_userdata([
-                'id' => $usuario->id,
-                'email' => $usuario->email,
-                'first_name' => $usuario->nombre,
-                'logged_in' => TRUE
-            ]);
-
-            redirect('dentist');
-        } else {
+        if (!$usuario) {
             $this->session->set_flashdata('error', 'Email o contraseña incorrectos.');
             redirect('login');
+            return;
         }
+    
+        $this->session->set_userdata([
+            'usuario_id' => $usuario->id, 
+            'email' => $usuario->email,
+            'nombre' => $usuario->first_name, 
+            'logged_in' => TRUE
+        ]);
+    
+        redirect('dentist');
     }
 
     public function logout() {

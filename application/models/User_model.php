@@ -28,15 +28,21 @@ class User_model extends CI_Model {
     }
 
     public function verificar_usuario($email, $password) {  
-        $query = $this->db->get_where('users', ['email' => $email]);
+        $this->db->where('email', trim($email));
+        $query = $this->db->get('users');
 
         if ($query->num_rows() == 1) {
-            $usuario = $query->row_array();
+            $usuario = $query->row();
 
-            if (password_verify($password, $usuario['password'])) {
+            if (password_verify($password, $usuario->password)) {
                 return $usuario;
+            } else {
+                echo "❌ Contraseña incorrecta";
+                exit();
             }
+        } else {
+            echo "❌ Usuario no encontrado";
+            exit();
         }
-        return false;
     }
 }
