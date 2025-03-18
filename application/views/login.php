@@ -31,8 +31,8 @@
             </form>
 
             <div class="links">
-                <a href="forgot-password.html">Olvidé mi contraseña</a>
-                <a href="register.html">Crear cuenta</a>
+                <a href="#">Olvidé mi contraseña</a>
+                <a href="user/create">Crear cuenta</a>
             </div>
         </div>
     </div>
